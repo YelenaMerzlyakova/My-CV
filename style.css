@@ -1,7 +1,7 @@
 body {
     margin: auto;
     height: 90%;
-    width: 100%;
+    width: 75%;
     background-image: url("https://i.pinimg.com/originals/d1/df/32/d1df32b71a5780434d31ba78adbb44aa.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -70,6 +70,7 @@ h2 span {
     justify-content: center;
     display: block;
     text-align: center;
+    width: 80%;
 }
 
 .header {
@@ -186,8 +187,8 @@ li {
 }
 
 
-.skills .languages progress {
-    color: #C3D5D9;
+.languages table progress {
+    color: #6b848c;
 }
 
 @media only screen and (max-width: 136px) {
@@ -264,6 +265,13 @@ li {
     .header h2{
         font-size: 1em;
     }
+
+    .contact {
+        font-size: 0.5em;
+    }
+    .contact table {
+        font-size: 0.5em;
+    }
 }
 @media only screen and (max-width: 360px) {
     .CV {
@@ -296,6 +304,10 @@ li {
 
     .header h2 {
         font-size: 1em;
+    }
+
+    .contact table {
+        font-size: 0.7em !important;
     }
 
     /*.contact p {
@@ -333,11 +345,19 @@ li {
 
     .header{
         background-color: #6b848c;
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .header h2 {
         font-size: 1.5em;
+    }
+
+    table {
+        font-size: 0.8em !important;
+    }
+
+    .connect table{
+        font-size: 0.8em;
     }
     /*.contact p {
         padding-bottom: 10%
@@ -418,7 +438,7 @@ li {
     }
 
     .header h2 {
-        font-size: 1.6em;
+        font-size: 1em;
     }
     .contact {
         height: auto;    
@@ -453,7 +473,7 @@ li {
     }
 
     .header h2 {
-        font-size: 1em;
+        font-size: 0.8em;
     }
 
     .contact {
