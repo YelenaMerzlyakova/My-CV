@@ -4,18 +4,95 @@ $white: white;
 $blgrey: #6b848c;
 $grblue: #4d6066;
 $drgrey: #6B7C81;
+$black: black;
+$blue: blue;
 
 /*Fonts*/
 $font-stack: Arial, sans-serif;
+
+/*Mixins*/
+@mixin margins {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin JustMarg {
+    margin: 0 auto;
+    justify-content: center;
+}
+/*media mixins*/
+
+$devicexs: 136px;
+
+$devices: 329px;
+
+$phone: 360px;
+
+$phoneL: 420px;
+
+$phoneXL: 590px;
+
+$tablet: 760px;
+
+$desktop: 1200px;
+
+$desktopXL: 1500px;
+
+@mixin devicexs {
+    @media (min-width: #{devicexs}) and (max-width: #{$devices - 1px}) {
+      @content;
+    }
+}
+
+@mixin devices {
+    @media (min-width: #{devices}) and (max-width: #{$phone - 1px}) {
+      @content;
+    }
+}
+
+@mixin phone {
+    @media (min-width: #{phone}) and (max-width: #{$phoneL - 1px}) {
+      @content;
+    }
+}
+
+@mixin phoneL {
+    @media (min-width: #{phoneL}) and (max-width: #{$phoneXL - 1px}) {
+      @content;
+    }
+}
+
+@mixin phoneXL {
+    @media (min-width: #{phoneXL}) and (max-width: #{$tablet - 1px}) {
+      @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{tablet}) and (max-width: #{$desktop - 1px}) {
+      @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{desktop}) and (max-width: #{desktopXL - 1px}) {
+      @content;
+    }
+}
+  
+  @mixin desktopXL {
+    @media (min-width: #{$desktopXL}) {
+      @content;
+    }
+}
+
+
 
 body {
     margin: auto;
     height: 90%;
     width: 75%;
-    background-image: url("https://i.pinimg.com/originals/d1/df/32/d1df32b71a5780434d31ba78adbb44aa.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-image: url("https://i.pinimg.com/originals/d1/df/32/d1df32b71a5780434d31ba78adbb44aa.jpg") no-repeat center cover;
 }
 
 h2 span {
@@ -28,13 +105,8 @@ h2 span {
     grid-template-rows: auto;
     grid-template-areas: "box1 box2 box3""box4 photo header""box7 contact main";
     background-color: $white;
-    border-style: solid;
-    border-color: $blgrey;
-    border-width: 2px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    border: 2px solid $blgrey;
+    margin: 5% 10% 5% 10%;
 }
 
 .box1 {
@@ -69,15 +141,14 @@ h2 span {
 }
 
 .pic {
+    @include margins();
     clip-path: circle(45% at center);
-    justify-self: center;
     height: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 80%;
+    justify-self: center;
     justify-content: center;
     display: block;
     text-align: center;
-    width: 80%;
 }
 
 .header {
@@ -90,11 +161,11 @@ h2 span {
     align-items: center;
     font-size: 2em;
     line-height: 0.5;
-}
-
-.header h2 {
-    text-align: center;
-    font-size: 2em;
+    
+    h2 {
+        text-align: center;
+        font-size: 2em;
+    }
 }
 
 .box7 {
@@ -113,36 +184,38 @@ h2 span {
     margin: 0 auto;
     text-align: center;
     line-height: 1.6;
+
+    table {
+        @include margins();
+        font-family: $font-stack;
+        font-size: 1em;
+        text-align: center;
+        padding-bottom: 15%;
+    }
+
+    p {
+        padding-bottom: 15%;
+    }
+
+    a:hover {
+        color: $blue;
+    }
+
+    .fas {
+        color: $black;
+    }
 }
 
-.contact table {
-    font-family: $font-stack;
-    font-size: 1em;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 15%;
+.connect {
+    a:hover {
+        color: $blue;
+    }
+
+    .fab {
+        color: $black;
+    }
 }
 
-.contact p {
-    padding-bottom: 15%;
-}
-
-.contact a:hover{
-    color: blue;
-}
-
-.contact .fas {
-    color: black;
-}
-
-.connect a:hover{
-    color: blue;
-}
-
-.connect .fab {
-    color: black;
-}
 
 .interests table {
     line-height: 1.6;
@@ -150,52 +223,51 @@ h2 span {
 }
 
 .main {
+    @include margins();
     grid-area: main;
     background-color: $white;
     width: 100%;
     text-align: center;
     font-size: 1em;
-    margin-left: auto;
-    margin-right: auto;
     line-height: 1.6;
-}
+    ol {
+        @include margins();
+        list-style-position: outside;
+    }
 
-.main ol{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.main ol {
-    list-style-position: outside;
-}
-
-.main table {
-    margin-left: auto;
-    margin-right: auto;
+    table {
+        @include margins();
+    }
 }
 
 .fa-ul {
     font-size: 1.2em;
 }
 
-li span  {
-    display:block;
-    padding-left: 5%;
-    font-weight: bold;
+li {
+    list-style-type: none;
+    text-align: center;
+
+    span {
+        display:block;
+        padding-left: 5%;
+        font-weight: bold;
+    }
 }
+
 
 .imp li {
     font-weight: bold;
 }
 
-li {
-    list-style-type: none;
-    text-align: center;
-}
 
 
-.languages table progress {
-    color: $blgrey;
+.languages {
+    table {
+        progress {
+            color: $blgrey;
+        }
+    }
 }
 
 @media only screen and (max-width: 136px) {
@@ -203,21 +275,20 @@ li {
         display: grid;
         grid-template-columns: 100%;
         grid-template-areas: "photo" "header" "contact" "main";
-            border-radius: 30px 30px 30px 30px;
+        border-radius: 30px 30px 30px 30px;
     }
-    .photo img{
-        height: 40%;
-        width: 40%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $blgrey;
-    }
-
-    .photo{
+    .photo {
         background-color: $blgrey;
         border-radius: 30px 30px 0 0;
         height: 40%;
         width: 40%;
+
+        img {
+            @include JustMarg();
+            height: 40%;
+            width: 40%;
+            background-color: $blgrey;
+        }
     }
 
     .header{
@@ -227,10 +298,13 @@ li {
         line-height: 1.2;
     }
 
-    .contact table {
-        font-size: 0.6em !important;
+    .contact {
+        table {
+            font-size: 0.6em !important;
+        }
     }
 }
+
 
 @media only screen and (min-width: 137) and (max-width: 329px) {
     .CV {
@@ -240,36 +314,33 @@ li {
             border-radius: 30px 30px 30px 30px;
     }
 
-    .photo img{
-        height: 40%;
-        width: 40%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $blgrey;
-    }
-
-    .photo{
+    .photo {
         background-color: $blgrey;
         border-radius: 30px 30px 0 0;
         height: 40%;
         width: 40%;
+        img {
+            @include JustMarg();
+            height: 40%;
+            width: 40%;
+            background-color: $blgrey;
+        }
     }
 
-    .header{
+    .header {
         background-color: $blgrey;
         font-size: 0.09em;
         height: 50%;
-    }
-
-    .header h2{
-        font-size: 1em;
+        h2 {
+            font-size: 1em;
+        }
     }
 
     .contact {
         font-size: 0.5em;
-    }
-    .contact table {
-        font-size: 0.5em;
+        table {
+            font-size: 0.5em;
+        }
     }
 }
 @media only screen and (max-width: 360px) {
@@ -277,28 +348,25 @@ li {
         display: grid;
         grid-template-columns: 100%;
         grid-template-areas: "photo" "header" "contact" "main";
-            border-radius: 30px 30px 30px 30px;
+        border-radius: 30px 30px 30px 30px;
     }
-    .photo img{
-        height: 100%;
-        width: 100%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $blgrey;
-    }
-
-    .photo{
+    .photo {
         background-color: $blgrey;
         border-radius: 30px 30px 0 0;
+        img {
+            @include JustMarg();
+            height: 100%;
+            width: 100%;
+            background-color: $blgrey;
+        }
     }
 
-    .header{
+    .header {
         background-color: $blgrey;
         font-size: 1em;
-    }
-
-    .header h2 {
-        font-size: 1em;
+        h2 {
+            font-size: 1em;
+        }
     }
 
     .contact table {
@@ -319,28 +387,25 @@ li {
         display: grid;
         grid-template-columns: 100%;
         grid-template-areas: "photo" "header" "contact" "main";
-            border-radius: 30px 30px 30px 30px;
+        border-radius: 30px 30px 30px 30px;
     }
-    .photo img{
-        height: 80%;
-        width: 80%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $blgrey;
-    }
-
-    .photo{
+    .photo {
         background-color: $blgrey;
         border-radius: 30px 30px 0 0;
+        img {
+            @include JustMarg();
+            height: 80%;
+            width: 80%;
+            background-color: $blgrey;
+        }
     }
 
     .header{
         background-color: $blgrey;
         font-size: 1em;
-    }
-
-    .header h2 {
-        font-size: 1.5em;
+        h2 {
+            font-size: 1.5em;
+        }
     }
 
     table {
@@ -367,28 +432,24 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
             border-radius: 30px 30px 30px 30px;
     }
-    .photo img{
-        height: 80%;
-        width: 80%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $blgrey;
-    }
-
-    .photo{
+    .photo {
         background-color: $blgrey;
         border-radius: 30px 30px 0 0;
+        img {
+            @include JustMarg();
+            height: 80%;
+            width: 80%;
+            background-color: $blgrey;
+        }
     }
 
     .header{
         background-color: $blgrey;
+        h2 {
+            font-size: 1em;
+        }
     }
-
-    .header h2 {
-        font-size: 1em;
-    }
-
-    .skills table{
+    .skills table {
         font-size: 1em;
         width: 45%;
     }
@@ -401,27 +462,24 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
             border-radius: 30px 30px 30px 30px;
     }
-    .photo img{
-        height: 87%;
-        width: 87%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $blgrey;
-    }
-
-    .photo{
+    .photo {
         background-color: $blgrey;
         border-radius: 30px 30px 0 0;
         height: 100%;
         width: 100%;
+        img {
+            @include JustMarg();
+            height: 87%;
+            width: 87%;
+            background-color: $blgrey;
+        }
     }
 
     .header{
         background-color: $blgrey;
-    }
-
-    .header h2 {
-        font-size: 1em;
+        h2 {
+            font-size: 1em;
+        }
     }
     .contact {
         height: auto;    
@@ -435,28 +493,25 @@ li {
         grid-template-areas: "photo header" "contact main";
         border-radius: 30px 30px 30px 30px;
     }
-    .photo img{
-        height: 100%;
-        width: 100%;
-        margin: 0 auto;
-        justify-content: center;
-        background-color: $grblue;
-    }
-
-    .photo{
+    .photo {
         background-color: $grblue;
         border-radius: 30px 0 0 0;
+        img{
+            @include JustMarg();
+            height: 100%;
+            width: 100%;
+            background-color: $grblue;
+        }
     }
 
     .header{
         background-color: $blgrey;
         border-radius: 0 30px 0 0;
+        h2 {
+            font-size: 0.8em;
+        }
     }
-
-    .header h2 {
-        font-size: 0.8em;
-    }
-
+    
     .contact {
         grid-area: contact;
         background-color: $grey;
@@ -477,24 +532,17 @@ li {
         grid-template-rows: auto;
         grid-template-areas:"box1 box2 box3""box4 photo header""box7 contact main";
         background-color: $white;
-        border-style: solid;
-        border-color: $blgrey;
-        border-width: 2px;
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-top: 5%;
-        margin-bottom: 5%;
+        border: 2px solid $blgrey;
+        margin: 5% 10% 5% 10%;
     }
-    .photo img{
-        height: 100%;
-        width: 100%;
-        margin: 0 auto;
-        justify-content: center;
+    .photo {
         background-color: $grblue;
-    }
-
-    .photo{
-        background-color: $grblue;
+            img{
+            @include JustMarg();
+            height: 100%;
+            width: 100%;
+            background-color: $grblue;
+            }
     }
 
     .header{
