@@ -1,0 +1,543 @@
+/*Colors*/
+$grey: #C3D5D9;
+$white: white;
+$blgrey: #6b848c;
+$grblue: #4d6066;
+$drgrey: #6B7C81;
+$black: black;
+$blue: blue;
+
+/*Fonts*/
+$font-stack: Arial, sans-serif;
+
+/*Mixins*/
+@mixin margins {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin JustMarg {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+@mixin CvMedia {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "photo" "header" "contact" "main";
+    border-radius: 30px 30px 30px 30px;
+}
+
+@mixin CvMain {
+    display: grid;
+    grid-template-columns: 10% 25% auto;
+    grid-template-rows: auto;
+    grid-template-areas: "box1 box2 box3""box4 photo header""box7 contact main";
+    background-color: $white;
+    border: 2px solid $blgrey;
+    margin: 5% 10% 5% 10%;
+}
+
+@mixin PhotoMedia {
+    background-color: $blgrey;
+    border-radius: 30px 30px 0 0;
+}
+
+@mixin Contact {
+    grid-area: contact;
+    background-color: $grey;
+    justify-self: center;
+    font-family: $font-stack;
+    font-size: 1em;
+    text-align: center;
+}
+
+@mixin HeightWidth {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin HalfHeightWidth {
+    height: 40%;
+    width: 40%;
+}
+
+/*media mixins*/
+
+$devicexs: 136px;
+
+$devices: 329px;
+
+$phone: 360px;
+
+$phoneL: 420px;
+
+$phoneXL: 590px;
+
+$tablet: 760px;
+
+$desktop: 1200px;
+
+$desktopXL: 1500px;
+
+@mixin devicexs {
+    @media (min-width: #{devicexs}) and (max-width: #{$devices - 1px}) {
+      @content;
+    }
+}
+
+@mixin devices {
+    @media (min-width: #{devices}) and (max-width: #{$phone - 1px}) {
+      @content;
+    }
+}
+
+@mixin phone {
+    @media (min-width: #{phone}) and (max-width: #{$phoneL - 1px}) {
+      @content;
+    }
+}
+
+@mixin phoneL {
+    @media (min-width: #{phoneL}) and (max-width: #{$phoneXL - 1px}) {
+      @content;
+    }
+}
+
+@mixin phoneXL {
+    @media (min-width: #{phoneXL}) and (max-width: #{$tablet - 1px}) {
+      @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{tablet}) and (max-width: #{$desktop - 1px}) {
+      @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{desktop}) and (max-width: #{desktopXL - 1px}) {
+      @content;
+    }
+}
+  
+  @mixin desktopXL {
+    @media (min-width: #{$desktopXL}) {
+      @content;
+    }
+}
+
+
+
+body {
+    margin: auto;
+    height: 90%;
+    width: 75%;
+    background-image: url("https://i.pinimg.com/originals/d1/df/32/d1df32b71a5780434d31ba78adbb44aa.jpg") no-repeat center cover;
+}
+
+h2 span {
+    background-color: $blgrey;
+}
+
+.CV {
+    @include CvMain();
+}
+
+.box1 {
+    grid-area: box1;
+    height: 25px;
+    background-color: $white;
+}
+
+.box2 {
+    grid-area: box2;
+    height: 25px;
+    background-color: $grey;
+}
+
+.box3 {
+    grid-area: box3;
+    height: 25px;
+    background-color: $white;
+}
+
+.box4 {
+    grid-area: box4;
+    background-color: $blgrey;
+    justify-content: center;
+}
+
+.photo {
+    grid-area: photo;
+    background-color: $grey;
+    justify-self: center;
+    width: 100%;
+}
+
+.pic {
+    @include margins();
+    clip-path: circle(45% at center);
+    height: 80%;
+    width: 80%;
+    justify-self: center;
+    justify-content: center;
+    display: block;
+    text-align: center;
+}
+
+.header {
+    grid-area: header;
+    background-color: $blgrey;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    line-height: 0.5;
+    
+    h2 {
+        text-align: center;
+        font-size: 2em;
+    }
+}
+
+.box7 {
+    grid-area: box7;
+    background-color: $white;
+}
+
+.contact {
+    @include Contact();
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.6;
+    
+    table {
+        @include margins();
+        font-family: $font-stack;
+        font-size: 1em;
+        text-align: center;
+        padding-bottom: 15%;
+    }
+
+    p {
+        padding-bottom: 15%;
+    }
+
+    a:hover {
+        color: $blue;
+    }
+
+    .fas {
+        color: $black;
+    }
+}
+
+.connect {
+    a:hover {
+        color: $blue;
+    }
+
+    .fab {
+        color: $black;
+    }
+}
+
+
+.interests table {
+    line-height: 1.6;
+    font-size: 3em;
+}
+
+.main {
+    @include margins();
+    grid-area: main;
+    background-color: $white;
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.6;
+    ol {
+        @include margins();
+        list-style-position: outside;
+    }
+
+    table {
+        @include margins();
+    }
+}
+
+.fa-ul {
+    font-size: 1.2em;
+}
+
+li {
+    list-style-type: none;
+    text-align: center;
+
+    span {
+        display:block;
+        padding-left: 5%;
+        font-weight: bold;
+    }
+}
+
+
+.imp li {
+    font-weight: bold;
+}
+
+
+
+.languages {
+    table {
+        progress {
+            color: $blgrey;
+        }
+    }
+}
+
+@media only screen and (max-width: 136px) {
+    .CV {
+        @include CvMedia();
+    }
+    .photo {
+        @include PhotoMedia();
+        @include HalfHeightWidth();
+
+        img {
+            @include JustMarg();
+            @include HalfHeightWidth();
+            background-color: $blgrey;
+        }
+    }
+
+    .header{
+        background-color: $drgrey;
+        font-size: 0.8em;
+        height: 50%;
+        line-height: 1.2;
+    }
+
+    .contact {
+        table {
+            font-size: 0.6em !important;
+        }
+    }
+}
+
+@media only screen and (min-width: 137) and (max-width: 329px) {
+    .CV {
+        @include CvMedia();
+    }
+
+    .photo {
+        @include PhotoMedia();
+        @include HalfHeightWidth();
+        img {
+            @include JustMarg();
+            @include HalfHeightWidth();
+            background-color: $blgrey;
+        }
+    }
+
+    .header {
+        background-color: $blgrey;
+        font-size: 0.09em;
+        height: 50%;
+        h2 {
+            font-size: 1em;
+        }
+    }
+
+    .contact {
+        font-size: 0.5em;
+        table {
+            font-size: 0.5em;
+        }
+    }
+}
+@media only screen and (max-width: 360px) {
+    .CV {
+        @include CvMedia();
+    }
+    .photo {
+        @include PhotoMedia();
+        img {
+            @include JustMarg();
+            @include HeightWidth();
+            background-color: $blgrey;
+        }
+    }
+
+    .header {
+        background-color: $blgrey;
+        font-size: 1em;
+        h2 {
+            font-size: 1em;
+        }
+    }
+
+    .contact table {
+        font-size: 0.7em !important;
+    }
+
+    /*.contact p {
+        padding-bottom: 10%
+    }
+
+    .contact table {
+        padding-bottom: 10%;
+    }*/
+}
+
+@media only screen and (min-width: 360px) and (max-width:420px){
+    .CV {
+        @include CvMedia();
+    }
+    .photo {
+        @include PhotoMedia();
+        img {
+            @include JustMarg();
+            height: 80%;
+            width: 80%;
+            background-color: $blgrey;
+        }
+    }
+
+    .header{
+        background-color: $blgrey;
+        font-size: 1em;
+        h2 {
+            font-size: 1.5em;
+        }
+    }
+
+    table {
+        font-size: 0.8em !important;
+    }
+
+    .connect table{
+        font-size: 0.8em;
+    }
+    /*.contact p {
+        padding-bottom: 10%
+    }
+
+    .contact table {
+        padding-bottom: 10%;
+    }*/
+}
+
+
+@media only screen and (min-width: 421px) and (max-width: 590px){
+    .CV {
+        @include CvMedia();
+    }
+    .photo {
+        @include PhotoMedia();
+        img {
+            @include JustMarg();
+            height: 80%;
+            width: 80%;
+            background-color: $blgrey;
+        }
+    }
+
+    .header{
+        background-color: $blgrey;
+        h2 {
+            font-size: 1em;
+        }
+    }
+    .skills table {
+        font-size: 1em;
+        width: 45%;
+    }
+}
+
+@media only screen and (min-width: 591px) and (max-width: 760px){
+    .CV {
+        @include CvMedia();
+    }
+    .photo {
+        @include PhotoMedia();
+        @include HeightWidth();
+        img {
+            @include JustMarg();
+            height: 87%;
+            width: 87%;
+            background-color: $blgrey;
+        }
+    }
+
+    .header{
+        background-color: $blgrey;
+        h2 {
+            font-size: 1em;
+        }
+    }
+    .contact {
+        height: auto;    
+    }
+}
+
+@media only screen and (min-width: 760px) and (max-width: 1200px) {
+    .CV {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-areas: "photo header" "contact main";
+        border-radius: 30px 30px 30px 30px;
+    }
+    .photo {
+        background-color: $grblue;
+        border-radius: 30px 0 0 0;
+        img{
+            @include JustMarg();
+            @include HeightWidth();
+            background-color: $grblue;
+        }
+    }
+
+    .header{
+        background-color: $blgrey;
+        border-radius: 0 30px 0 0;
+        h2 {
+            font-size: 0.8em;
+        }
+    }
+    
+    .contact {
+        @include HeightWidth();
+        @include Contact();
+        margin-bottom: auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1500px) {
+    .CV {
+        @include CvMain();
+    }
+    .photo {
+        background-color: $grblue;
+            img{
+            @include JustMarg();
+            @include HeightWidth();
+            background-color: $grblue;
+            }
+    }
+
+    .header{
+        background-color: $blgrey;
+        font-size: 1.5em;
+    }
+    .contact {
+        @include HeightWidth();
+        @include Contact();
+        margin-bottom: auto;
+    }
+}
