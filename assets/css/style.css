@@ -1,13 +1,12 @@
 /*Colors*/
 /*Fonts*/
+/*Mixins*/
+/*media mixins*/
 body {
   margin: auto;
   height: 90%;
   width: 75%;
-  background-image: url("https://i.pinimg.com/originals/d1/df/32/d1df32b71a5780434d31ba78adbb44aa.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url("https://i.pinimg.com/originals/d1/df/32/d1df32b71a5780434d31ba78adbb44aa.jpg") no-repeat center cover;
 }
 
 h2 span {
@@ -23,13 +22,8 @@ h2 span {
       grid-template-rows: auto;
       grid-template-areas: "box1 box2 box3" "box4 photo header" "box7 contact main";
   background-color: white;
-  border-style: solid;
-  border-color: #6b848c;
-  border-width: 2px;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  border: 2px solid #6b848c;
+  margin: 5% 10% 5% 10%;
 }
 
 .box1 {
@@ -77,19 +71,19 @@ h2 span {
 }
 
 .pic {
-  -webkit-clip-path: circle(45% at center);
-          clip-path: circle(45% at center);
-  -ms-grid-column-align: center;
-      justify-self: center;
-  height: 80%;
   margin-left: auto;
   margin-right: auto;
+  -webkit-clip-path: circle(45% at center);
+          clip-path: circle(45% at center);
+  height: 80%;
+  width: 80%;
+  -ms-grid-column-align: center;
+      justify-self: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   display: block;
   text-align: center;
-  width: 80%;
 }
 
 .header {
@@ -144,11 +138,11 @@ h2 span {
 }
 
 .contact table {
+  margin-left: auto;
+  margin-right: auto;
   font-family: Arial, sans-serif;
   font-size: 1em;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
   padding-bottom: 15%;
 }
 
@@ -178,6 +172,8 @@ h2 span {
 }
 
 .main {
+  margin-left: auto;
+  margin-right: auto;
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: main;
@@ -185,17 +181,12 @@ h2 span {
   width: 100%;
   text-align: center;
   font-size: 1em;
-  margin-left: auto;
-  margin-right: auto;
   line-height: 1.6;
 }
 
 .main ol {
   margin-left: auto;
   margin-right: auto;
-}
-
-.main ol {
   list-style-position: outside;
 }
 
@@ -208,6 +199,11 @@ h2 span {
   font-size: 1.2em;
 }
 
+li {
+  list-style-type: none;
+  text-align: center;
+}
+
 li span {
   display: block;
   padding-left: 5%;
@@ -216,11 +212,6 @@ li span {
 
 .imp li {
   font-weight: bold;
-}
-
-li {
-  list-style-type: none;
-  text-align: center;
 }
 
 .languages table progress {
@@ -236,20 +227,20 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
     border-radius: 30px 30px 30px 30px;
   }
-  .photo img {
-    height: 40%;
-    width: 40%;
-    margin: 0 auto;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    background-color: #6b848c;
-  }
   .photo {
     background-color: #6b848c;
     border-radius: 30px 30px 0 0;
     height: 40%;
     width: 40%;
+  }
+  .photo img {
+    margin: 0 auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 40%;
+    width: 40%;
+    background-color: #6b848c;
   }
   .header {
     background-color: #6B7C81;
@@ -271,20 +262,20 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
     border-radius: 30px 30px 30px 30px;
   }
-  .photo img {
-    height: 40%;
-    width: 40%;
-    margin: 0 auto;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    background-color: #6b848c;
-  }
   .photo {
     background-color: #6b848c;
     border-radius: 30px 30px 0 0;
     height: 40%;
     width: 40%;
+  }
+  .photo img {
+    margin: 0 auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 40%;
+    width: 40%;
+    background-color: #6b848c;
   }
   .header {
     background-color: #6b848c;
@@ -311,18 +302,18 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
     border-radius: 30px 30px 30px 30px;
   }
+  .photo {
+    background-color: #6b848c;
+    border-radius: 30px 30px 0 0;
+  }
   .photo img {
-    height: 100%;
-    width: 100%;
     margin: 0 auto;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    height: 100%;
+    width: 100%;
     background-color: #6b848c;
-  }
-  .photo {
-    background-color: #6b848c;
-    border-radius: 30px 30px 0 0;
   }
   .header {
     background-color: #6b848c;
@@ -352,18 +343,18 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
     border-radius: 30px 30px 30px 30px;
   }
+  .photo {
+    background-color: #6b848c;
+    border-radius: 30px 30px 0 0;
+  }
   .photo img {
-    height: 80%;
-    width: 80%;
     margin: 0 auto;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    height: 80%;
+    width: 80%;
     background-color: #6b848c;
-  }
-  .photo {
-    background-color: #6b848c;
-    border-radius: 30px 30px 0 0;
   }
   .header {
     background-color: #6b848c;
@@ -396,18 +387,18 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
     border-radius: 30px 30px 30px 30px;
   }
+  .photo {
+    background-color: #6b848c;
+    border-radius: 30px 30px 0 0;
+  }
   .photo img {
-    height: 80%;
-    width: 80%;
     margin: 0 auto;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    height: 80%;
+    width: 80%;
     background-color: #6b848c;
-  }
-  .photo {
-    background-color: #6b848c;
-    border-radius: 30px 30px 0 0;
   }
   .header {
     background-color: #6b848c;
@@ -430,20 +421,20 @@ li {
         grid-template-areas: "photo" "header" "contact" "main";
     border-radius: 30px 30px 30px 30px;
   }
-  .photo img {
-    height: 87%;
-    width: 87%;
-    margin: 0 auto;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    background-color: #6b848c;
-  }
   .photo {
     background-color: #6b848c;
     border-radius: 30px 30px 0 0;
     height: 100%;
     width: 100%;
+  }
+  .photo img {
+    margin: 0 auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 87%;
+    width: 87%;
+    background-color: #6b848c;
   }
   .header {
     background-color: #6b848c;
@@ -465,18 +456,18 @@ li {
         grid-template-areas: "photo header" "contact main";
     border-radius: 30px 30px 30px 30px;
   }
+  .photo {
+    background-color: #4d6066;
+    border-radius: 30px 0 0 0;
+  }
   .photo img {
-    height: 100%;
-    width: 100%;
     margin: 0 auto;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    height: 100%;
+    width: 100%;
     background-color: #4d6066;
-  }
-  .photo {
-    background-color: #4d6066;
-    border-radius: 30px 0 0 0;
   }
   .header {
     background-color: #6b848c;
@@ -511,24 +502,19 @@ li {
         grid-template-rows: auto;
         grid-template-areas: "box1 box2 box3" "box4 photo header" "box7 contact main";
     background-color: white;
-    border-style: solid;
-    border-color: #6b848c;
-    border-width: 2px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    border: 2px solid #6b848c;
+    margin: 5% 10% 5% 10%;
+  }
+  .photo {
+    background-color: #4d6066;
   }
   .photo img {
-    height: 100%;
-    width: 100%;
     margin: 0 auto;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    background-color: #4d6066;
-  }
-  .photo {
+    height: 100%;
+    width: 100%;
     background-color: #4d6066;
   }
   .header {

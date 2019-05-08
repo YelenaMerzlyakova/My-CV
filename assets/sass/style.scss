@@ -20,6 +20,48 @@ $font-stack: Arial, sans-serif;
     margin: 0 auto;
     justify-content: center;
 }
+
+@mixin CvMedia {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "photo" "header" "contact" "main";
+    border-radius: 30px 30px 30px 30px;
+}
+
+@mixin CvMain {
+    display: grid;
+    grid-template-columns: 10% 25% auto;
+    grid-template-rows: auto;
+    grid-template-areas: "box1 box2 box3""box4 photo header""box7 contact main";
+    background-color: $white;
+    border: 2px solid $blgrey;
+    margin: 5% 10% 5% 10%;
+}
+
+@mixin PhotoMedia {
+    background-color: $blgrey;
+    border-radius: 30px 30px 0 0;
+}
+
+@mixin Contact {
+    grid-area: contact;
+    background-color: $grey;
+    justify-self: center;
+    font-family: $font-stack;
+    font-size: 1em;
+    text-align: center;
+}
+
+@mixin HeightWidth {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin HalfHeightWidth {
+    height: 40%;
+    width: 40%;
+}
+
 /*media mixins*/
 
 $devicexs: 136px;
@@ -100,13 +142,7 @@ h2 span {
 }
 
 .CV {
-    display: grid;
-    grid-template-columns: 10% 25% auto;
-    grid-template-rows: auto;
-    grid-template-areas: "box1 box2 box3""box4 photo header""box7 contact main";
-    background-color: $white;
-    border: 2px solid $blgrey;
-    margin: 5% 10% 5% 10%;
+    @include CvMain();
 }
 
 .box1 {
@@ -174,17 +210,12 @@ h2 span {
 }
 
 .contact {
-    grid-area: contact;
-    background-color: $grey;
-    justify-self: center;
+    @include Contact();
     width: 100%;
-    font-family: $font-stack;
-    font-size: 1em;
     text-align: center;
     margin: 0 auto;
-    text-align: center;
     line-height: 1.6;
-
+    
     table {
         @include margins();
         font-family: $font-stack;
@@ -272,21 +303,15 @@ li {
 
 @media only screen and (max-width: 136px) {
     .CV {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-areas: "photo" "header" "contact" "main";
-        border-radius: 30px 30px 30px 30px;
+        @include CvMedia();
     }
     .photo {
-        background-color: $blgrey;
-        border-radius: 30px 30px 0 0;
-        height: 40%;
-        width: 40%;
+        @include PhotoMedia();
+        @include HalfHeightWidth();
 
         img {
             @include JustMarg();
-            height: 40%;
-            width: 40%;
+            @include HalfHeightWidth();
             background-color: $blgrey;
         }
     }
@@ -307,21 +332,15 @@ li {
 
 @media only screen and (min-width: 137) and (max-width: 329px) {
     .CV {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-areas: "photo" "header" "contact" "main";
-            border-radius: 30px 30px 30px 30px;
+        @include CvMedia();
     }
 
     .photo {
-        background-color: $blgrey;
-        border-radius: 30px 30px 0 0;
-        height: 40%;
-        width: 40%;
+        @include PhotoMedia();
+        @include HalfHeightWidth();
         img {
             @include JustMarg();
-            height: 40%;
-            width: 40%;
+            @include HalfHeightWidth();
             background-color: $blgrey;
         }
     }
@@ -344,18 +363,13 @@ li {
 }
 @media only screen and (max-width: 360px) {
     .CV {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-areas: "photo" "header" "contact" "main";
-        border-radius: 30px 30px 30px 30px;
+        @include CvMedia();
     }
     .photo {
-        background-color: $blgrey;
-        border-radius: 30px 30px 0 0;
+        @include PhotoMedia();
         img {
             @include JustMarg();
-            height: 100%;
-            width: 100%;
+            @include HeightWidth();
             background-color: $blgrey;
         }
     }
@@ -383,14 +397,10 @@ li {
 
 @media only screen and (min-width: 360px) and (max-width:420px){
     .CV {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-areas: "photo" "header" "contact" "main";
-        border-radius: 30px 30px 30px 30px;
+        @include CvMedia();
     }
     .photo {
-        background-color: $blgrey;
-        border-radius: 30px 30px 0 0;
+        @include PhotoMedia();
         img {
             @include JustMarg();
             height: 80%;
@@ -426,14 +436,10 @@ li {
 
 @media only screen and (min-width: 421px) and (max-width: 590px){
     .CV {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-areas: "photo" "header" "contact" "main";
-            border-radius: 30px 30px 30px 30px;
+        @include CvMedia();
     }
     .photo {
-        background-color: $blgrey;
-        border-radius: 30px 30px 0 0;
+        @include PhotoMedia();
         img {
             @include JustMarg();
             height: 80%;
@@ -456,16 +462,11 @@ li {
 
 @media only screen and (min-width: 591px) and (max-width: 760px){
     .CV {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-areas: "photo" "header" "contact" "main";
-            border-radius: 30px 30px 30px 30px;
+        @include CvMedia();
     }
     .photo {
-        background-color: $blgrey;
-        border-radius: 30px 30px 0 0;
-        height: 100%;
-        width: 100%;
+        @include PhotoMedia();
+        @include HeightWidth();
         img {
             @include JustMarg();
             height: 87%;
@@ -497,8 +498,7 @@ li {
         border-radius: 30px 0 0 0;
         img{
             @include JustMarg();
-            height: 100%;
-            width: 100%;
+            @include HeightWidth();
             background-color: $grblue;
         }
     }
@@ -512,34 +512,21 @@ li {
     }
     
     .contact {
-        grid-area: contact;
-        background-color: $grey;
-        justify-self: center;
-        width: 100%;
-        font-family: $font-stack;
-        font-size: 1em;
-        text-align: center;
-        height: 100%;
+        @include HeightWidth();
+        @include Contact();
         margin-bottom: auto;
     }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1500px) {
     .CV {
-        display: grid;
-        grid-template-columns: 10% 25% auto;
-        grid-template-rows: auto;
-        grid-template-areas:"box1 box2 box3""box4 photo header""box7 contact main";
-        background-color: $white;
-        border: 2px solid $blgrey;
-        margin: 5% 10% 5% 10%;
+        @include CvMain();
     }
     .photo {
         background-color: $grblue;
             img{
             @include JustMarg();
-            height: 100%;
-            width: 100%;
+            @include HeightWidth();
             background-color: $grblue;
             }
     }
@@ -549,14 +536,8 @@ li {
         font-size: 1.5em;
     }
     .contact {
-        grid-area: contact;
-        background-color: $grey;
-        justify-self: center;
-        width: 100%;
-        font-family: $font-stack;
-        font-size: 1em;
-        text-align: center;
-        height: 100%;
+        @include HeightWidth();
+        @include Contact();
         margin-bottom: auto;
     }
 }
